@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "B:\\bsa\\park\\park.csproj": {}
+    "B:\\bsa\\gitpark\\parking\\park.csproj": {}
   },
   "projects": {
-    "B:\\bsa\\park\\park.csproj": {
+    "B:\\bsa\\gitpark\\parking\\park.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "B:\\bsa\\park\\park.csproj",
+        "projectUniqueName": "B:\\bsa\\gitpark\\parking\\park.csproj",
         "projectName": "park",
-        "projectPath": "B:\\bsa\\park\\park.csproj",
+        "projectPath": "B:\\bsa\\gitpark\\parking\\park.csproj",
         "packagesPath": "C:\\Users\\ярiк\\.nuget\\packages\\",
-        "outputPath": "B:\\bsa\\park\\obj\\",
+        "outputPath": "B:\\bsa\\gitpark\\parking\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "B:\\vs+\\NuGetPackages"
