@@ -1,0 +1,15 @@
+B:\bsa\park\bin\Debug\net6.0\park.exe
+B:\bsa\park\bin\Debug\net6.0\park.deps.json
+B:\bsa\park\bin\Debug\net6.0\park.runtimeconfig.json
+B:\bsa\park\bin\Debug\net6.0\park.dll
+B:\bsa\park\bin\Debug\net6.0\park.pdb
+B:\bsa\park\obj\Debug\net6.0\park.csproj.AssemblyReference.cache
+B:\bsa\park\obj\Debug\net6.0\park.GeneratedMSBuildEditorConfig.editorconfig
+B:\bsa\park\obj\Debug\net6.0\park.AssemblyInfoInputs.cache
+B:\bsa\park\obj\Debug\net6.0\park.AssemblyInfo.cs
+B:\bsa\park\obj\Debug\net6.0\park.csproj.CoreCompileInputs.cache
+B:\bsa\park\obj\Debug\net6.0\park.dll
+B:\bsa\park\obj\Debug\net6.0\refint\park.dll
+B:\bsa\park\obj\Debug\net6.0\park.pdb
+B:\bsa\park\obj\Debug\net6.0\park.genruntimeconfig.cache
+B:\bsa\park\obj\Debug\net6.0\ref\park.dll
