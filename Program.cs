@@ -1,4 +1,6 @@
-﻿int menupunkt = 0;
+﻿using System.IO;
+
+int menupunkt = 0;
 string vID;
 int bal;
 string vtype;
@@ -15,13 +17,26 @@ do
 
 void Menu()
 {
-    Console.WriteLine("Введіть елемент меню:\n"+"1)Поставити ТЗ на паркінг\n"+"Поповнити баланс ТЗ\n"+"Достунпі місця\n");
+    Console.WriteLine("Введіть елемент меню:\n"+"1)Поставити ТЗ на паркінг\n"+"2)Поповнити баланс ТЗ\n"+"3)Достунпі місця");
     int menupunkt = Convert.ToInt32(Console.ReadLine());
     switch (menupunkt)
     {
         case 1:
-            //Console.WriteLine("Поставити транспорт чи забрати?");
-            addviecle();
+            Console.WriteLine("Поставити транспорт чи забрати?+\n"+"1)Поставити \n"+ "2)Забрати\n");
+            int menupunkt2 = Convert.ToInt32(Console.ReadLine());
+            switch (menupunkt)
+            {   
+                case 1:
+                    addviecle();
+                    break;
+                case 2:
+                    deleteviecle();
+                    break;
+                default:
+                    break;
+            }
+
+           
            
             break;
         case 2:
@@ -47,6 +62,13 @@ void addviecle()
     vtype = Console.ReadLine();
     viechles.Add(new Viechle() { ViechleId = vID, Viechletype = vtype, Viechlbalance = bal });
     Console.WriteLine("Транспорт додано");
+}
+void deleteviecle() 
+{
+    Console.WriteLine("Введіть айді транспорту:");
+    vID = Console.ReadLine();
+    viechles.Remove(new Viechle() { ViechleId = vID});
+    Console.WriteLine("Видалено");
 }
 
 //object Viechle(string ID,double balance)
