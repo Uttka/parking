@@ -71,13 +71,13 @@ void addviecle()
                 {
                     viechles.Add(new Viechle() { ViechleId = vID, Viechletype = vtype, Viechlbalance = bal });
                     Console.Clear();
-                    Console.WriteLine("Транспорт додано");
+                    Console.WriteLine("Транспорт додано\n");
                 }
             
                 
                 else
                 {
-                    Console.WriteLine($"Ваш тип {vtype}, але вірний формат:Легкова, Вантажна, Автобус, Мотоцикл") ;
+                    Console.WriteLine($"Ваш тип {vtype}, але вірний формат:Легкова, Вантажна, Автобус, Мотоцикл\n") ;
                 }
             }
             else
@@ -154,7 +154,7 @@ void deleteviecle()
     }
     else
     {
-        Console.WriteLine("Парк зайнято з "+Convert.ToString(viechles.Count-10)+" по 10\n");
+        Console.WriteLine("Парк зайнято з "+Convert.ToString(viechles.Count)+" по 10\n");
     }
 }   
 
