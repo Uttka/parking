@@ -1,11 +1,12 @@
 ﻿using System.IO;
 using System.Text.RegularExpressions;
-
+Console.OutputEncoding = System.Text.Encoding.Unicode;
+Console.InputEncoding = System.Text.Encoding.Unicode;
 int menupunkt = 0;
 string vID;
 int bal;
 string vtype;
-int menupunkt2;
+
 List<Viechle> viechles = new List<Viechle>();
 
 do
@@ -19,16 +20,14 @@ do
 
 void Menu()
 {
-    Console.WriteLine("Введіть елемент меню:\n"+"1)Поставити ТЗ на паркінг\n"+ "2)Забрати\n" + "3)Доступні місця");
+    Console.WriteLine("Введіть елемент меню:\n"+"1)Поставити ТЗ на паркінг\n"+ "2)Забрати\n" + "3)Доступні місця\n" + "4)Переглянути баланс\n");
     int menupunkt = Convert.ToInt32(Console.ReadLine());
     switch (menupunkt)
     {
         case 1:
             Console.Clear();
             Console.WriteLine("Поставити транспорт");
-
             addviecle();
-
             break;
         case 2:
             Console.Clear();
@@ -38,10 +37,13 @@ void Menu()
         case 3:
             Console.Clear();
             Console.WriteLine("Доступні місця");
-
             vieclesinpark();
             break;
+        case 4:
+            vieclebalance();
+            break; 
         default:
+            Console.Clear();
             Console.WriteLine("Ви ввели неправильний пункт меню\n");
             break;
     }
@@ -146,18 +148,46 @@ void deleteviecle()
 {
     if (viechles.Count==10)
     {
+        Console.Clear();
         Console.WriteLine("Парк зайнято\n");
     }
     else if (viechles.Count==0)
     {
+        Console.Clear();
         Console.WriteLine("Парк не зайнято\n");
     }
     else
     {
-        Console.WriteLine("Парк зайнято з "+Convert.ToString(viechles.Count)+" по 10\n");
+        Console.Clear();
+        Console.WriteLine("Парк доступен з "+Convert.ToString(viechles.Count+1)+" по 10 місце\n");
     }
 }   
 
+void vieclebalance()
+{
+    enterelement("айді транспорту");
+    vID = Console.ReadLine();
+    if (idformat(vID))
+    {
+        if ((viechles.Contains(new Viechle { ViechleId = vID })))
+        {
+          int id = viechles.IndexOf(new Viechle { ViechleId = vID });
+            Console.WriteLine(viechles[id]);
+        }
+        else
+        {
+            Console.Clear();
+            Console.WriteLine("Транспорт не знайдено\n");
+        }
+
+    }
+    else
+    {
+        Console.WriteLine($"Ваш айді '{vID}' не підходить під формат: ХХ-YYYY-XX");
+    }
+
+
+}
 public class Viechle : IEquatable<Viechle>
 {
     public string ViechleId { get; set; }

@@ -8,23 +8,23 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ярiк\\.nuget\\packages\\": {},
-    "B:\\vs+\\NuGetPackages": {}
+    "C:\\Users\\andre\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "B:\\bsa\\gitpark\\parking\\park.csproj",
+      "projectUniqueName": "D:\\bsa\\parking\\park.csproj",
       "projectName": "park",
-      "projectPath": "B:\\bsa\\gitpark\\parking\\park.csproj",
-      "packagesPath": "C:\\Users\\ярiк\\.nuget\\packages\\",
-      "outputPath": "B:\\bsa\\gitpark\\parking\\obj\\",
+      "projectPath": "D:\\bsa\\parking\\park.csproj",
+      "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
+      "outputPath": "D:\\bsa\\parking\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "B:\\vs+\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ярiк\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -66,7 +66,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
