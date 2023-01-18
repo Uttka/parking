@@ -19,7 +19,7 @@ do
 
 void Menu()
 {
-    Console.WriteLine("Введіть елемент меню:\n"+"1)Поставити ТЗ на паркінг\n"+ "2)Забрати\n" + "3)Доступні місця");
+    Console.WriteLine("Введіть елемент меню:\n"+"1)Поставити ТЗ на паркінг\n"+ "2)Забрати\n" + "3)Доступні місця" + "4)Переглянути баланс\n");
     int menupunkt = Convert.ToInt32(Console.ReadLine());
     switch (menupunkt)
     {
@@ -41,6 +41,10 @@ void Menu()
 
             vieclesinpark();
             break;
+        case 4:
+            vieclebalance();
+            break; 
+
         default:
             Console.WriteLine("Ви ввели неправильний пункт меню\n");
             break;
@@ -158,6 +162,31 @@ void deleteviecle()
     }
 }   
 
+void vieclebalance()
+{
+    enterelement("айді транспорту");
+    vID = Console.ReadLine();
+    if (idformat(vID))
+    {
+        if ((viechles.Contains(new Viechle { ViechleId = vID })))
+        {
+          int id = viechles.IndexOf(new Viechle { ViechleId = vID });
+            Console.WriteLine(viechles[id]);
+        }
+        else
+        {
+            Console.Clear();
+            Console.WriteLine("Транспорт не знайдено\n");
+        }
+
+    }
+    else
+    {
+        Console.WriteLine($"Ваш айді '{vID}' не підходить під формат: ХХ-YYYY-XX");
+    }
+
+
+}
 public class Viechle : IEquatable<Viechle>
 {
     public string ViechleId { get; set; }
