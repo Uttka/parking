@@ -2,17 +2,17 @@
 using System.Text.RegularExpressions;
 Console.OutputEncoding = System.Text.Encoding.Unicode;
 Console.InputEncoding = System.Text.Encoding.Unicode;
-int menupunkt = 0;
+
 string vID;
 int bal;
 string vtype;
-
+string menupunkt;
 List<Viechle> viechles = new List<Viechle>();
 
 do
 {
     Menu();
-} while (menupunkt != 5);
+} while (menupunkt != "6");
 
 
 
@@ -20,28 +20,37 @@ do
 
 void Menu()
 {
-    Console.WriteLine("Введіть елемент меню:\n"+"1)Поставити ТЗ на паркінг\n"+ "2)Забрати\n" + "3)Доступні місця\n" + "4)Переглянути баланс\n");
-    int menupunkt = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Введіть елемент меню:\n"+"1)Поставити ТЗ на паркінг\n"+ "2)Забрати\n" + "3)Доступні місця\n" + "4)Переглянути баланс\n" + "5)Додати баланс\n"+"6)Вийти в меню");
+     menupunkt =Console.ReadLine();
     switch (menupunkt)
     {
-        case 1:
+        case "1":
             Console.Clear();
             Console.WriteLine("Поставити транспорт");
             addviecle();
             break;
-        case 2:
+        case "2":
             Console.Clear();
             Console.WriteLine("Забрати транспорт");
             deleteviecle();
             break;
-        case 3:
+        case "3":
             Console.Clear();
             Console.WriteLine("Доступні місця");
             vieclesinpark();
             break;
-        case 4:
+        case "4":
             vieclebalance();
-            break; 
+            break;
+        case "5":
+            Console.Clear();
+            Console.WriteLine("Додати баланс");
+            addbalance();
+            break;
+        case "6":
+            Console.Clear();
+            Console.WriteLine("Ви вийшли з програми");
+            break;
         default:
             Console.Clear();
             Console.WriteLine("Ви ввели неправильний пункт меню\n");
@@ -132,6 +141,7 @@ bool typeformat(string type)
 void deleteviecle() 
 {
     Console.WriteLine("Введіть айді транспорту:");
+
     vID = Console.ReadLine();
     if (idformat(vID))
     {
@@ -161,8 +171,19 @@ void deleteviecle()
         Console.Clear();
         Console.WriteLine("Парк доступен з "+Convert.ToString(viechles.Count+1)+" по 10 місце\n");
     }
-}   
+}
+void addbalance()
+{
+    enterelement("айді ТЗ");
+    vID = Console.ReadLine();
+    enterelement("Суму щоб додати:");
+    bal =Convert.ToInt32( Console.ReadLine());
+    var vic = viechles.First(v => v.ViechleId == vID);
 
+    vic.Viechlbalance += bal;
+    Console.WriteLine($"Додано {bal}, поточний баланс {vic.Viechlbalance}");
+
+}
 void vieclebalance()
 {
     enterelement("айді транспорту");
@@ -218,12 +239,3 @@ public class Viechle : IEquatable<Viechle>
    
 }
 
-//try
-//{
-//    Console.WriteLine("на першому місці стоїть авто з айді:" + Convert.ToString(viechles[0]));
-//}
-//catch (Exception)
-//{
-
-//    Console.WriteLine("Тз не знайдено");
-//}
