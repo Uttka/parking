@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4SVurGLT1ICmxaVPEFcOb47hsy+ir0AG54dRA8iFqsWg7PR8Yqih6+j/yir5BZD28CTgd+IH8gP1JVgF7jlY4w==",
+  "dgSpecHash": "+OXo153TmA+vIOtVgKV7he3EgeqF74K1AtFHHupHbmsj9bfkGodJBJ5Y6PTijFhTCPVF4d2WwdQN9BuUQq7qYQ==",
   "success": true,
-  "projectFilePath": "D:\\bsa\\parking\\park.csproj",
+  "projectFilePath": "B:\\bsa\\gitpark\\parking\\park.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

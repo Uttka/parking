@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Text.RegularExpressions;
 Console.OutputEncoding = System.Text.Encoding.Unicode;
 Console.InputEncoding = System.Text.Encoding.Unicode;
@@ -14,37 +15,25 @@ do
     Menu();
 } while (menupunkt != "6");
 
-
-
-
-
 void Menu()
 {
     Console.WriteLine("Введіть елемент меню:\n"+"1)Поставити ТЗ на паркінг\n"+ "2)Забрати\n" + "3)Доступні місця\n" + "4)Переглянути баланс\n" + "5)Додати баланс\n"+"6)Вийти в меню");
-     menupunkt =Console.ReadLine();
+     menupunkt = Console.ReadLine();
     switch (menupunkt)
     {
         case "1":
-            Console.Clear();
-            Console.WriteLine("Поставити транспорт");
             addviecle();
             break;
         case "2":
-            Console.Clear();
-            Console.WriteLine("Забрати транспорт");
             deleteviecle();
             break;
         case "3":
-            Console.Clear();
-            Console.WriteLine("Доступні місця");
             vieclesinpark();
             break;
         case "4":
             vieclebalance();
             break;
-        case "5":
-            Console.Clear();
-            Console.WriteLine("Додати баланс");
+        case "5": 
             addbalance();
             break;
         case "6":
@@ -60,48 +49,41 @@ void Menu()
 }
 void addviecle()
 {
+    Console.Clear();
+    Console.WriteLine("Поставити транспорт\n");
     if (viechles.Count<11)
     {
         enterelement("айді транспорту");
         vID = Console.ReadLine();
-        
+
         if (idformat(vID))
         {
-            if (!(viechles.Contains(new Viechle { ViechleId = vID })))
+            if (viechles.Contains(new Viechle { ViechleId = vID }))
+            {
+                Console.Clear();
+                Console.WriteLine("Транспорт Вже на паркінгу\n");
+            }
+            else
             {
 
                 enterelement("баланс транспорту");
 
                 bal = Convert.ToInt32(Console.ReadLine());
-              
+
                 enterelement("тип");
 
                 vtype = Console.ReadLine();
 
                 if (typeformat(vtype))
                 {
-                    viechles.Add(new Viechle() { ViechleId = vID, Viechletype = vtype, Viechlbalance = bal });
+                    viechles.Add( new Viechle() { ViechleId = vID, Viechletype = vtype, Viechlbalance = bal });
                     Console.Clear();
                     Console.WriteLine("Транспорт додано\n");
                 }
-            
-                
-                else
-                {
-                    Console.WriteLine($"Ваш тип {vtype}, але вірний формат:Легкова, Вантажна, Автобус, Мотоцикл\n") ;
-                }
-            }
-            else
-            {
-                Console.Clear();
-                Console.WriteLine("Транспорт Вже на паркінгу\n");
             }
 
         }
-        else
-        {
-            Console.WriteLine($"Ваш айді '{vID}' не підходить під формат: ХХ-YYYY-XX");
-        }
+      
 
     }
     else
@@ -116,18 +98,31 @@ void enterelement(string word)
 }
 bool idformat(string word)
 {
+    var regex = new Regex("^\\b[A-Z]{2}-\\d{4}-\\b[A-Z]{2}$");
     if (word == null)
     {
         return false;
     }
-    var regex = new Regex("^\\b[A-Z]{2}-\\d{4}-\\b[A-Z]{2}$");
-    return regex.IsMatch(word);
+    else if (regex.IsMatch(word)==true)
+    {
+        return true;
+    }
+    else
+    {
+        Console.WriteLine($"Ваш айді '{word}' не підходить під формат: ХХ-YYYY-XX");
+        return false;
+    }
+ 
+   
 }
 bool typeformat(string type) 
 {
-    if (type == null) 
+    if (type == null)
     {
+        Console.WriteLine($"Ваш тип {vtype}, але вірний формат:Легкова, Вантажна, Автобус, Мотоцикл\n");
         return false;
+       
+
     }
     else if(type== "Легкова" || type == "Вантажна" || type == "Автобус" || type == "Мотоцикл")
     {
@@ -135,27 +130,27 @@ bool typeformat(string type)
     }
     else
     {
+        Console.WriteLine($"Ваш тип {vtype}, але вірний формат:Легкова, Вантажна, Автобус, Мотоцикл\n");
         return false;
     }
 }
 void deleteviecle() 
 {
+    Console.Clear();
+    Console.WriteLine("Забрати транспорт\n");
     Console.WriteLine("Введіть айді транспорту:");
-
     vID = Console.ReadLine();
     if (idformat(vID))
     {
-
         viechles.Remove(new Viechle() { ViechleId = vID });
         Console.WriteLine("Видалено\n");
     }
-    else
-    {
-        Console.WriteLine($"Ваш айді '{vID}' не підходить під формат: ХХ-YYYY-XX");
-    }
+  
 }
- void vieclesinpark() 
+ void vieclesinpark()
 {
+    Console.Clear();
+    Console.WriteLine("Доступні місця\n");
     if (viechles.Count==10)
     {
         Console.Clear();
@@ -174,9 +169,11 @@ void deleteviecle()
 }
 void addbalance()
 {
+    Console.Clear();
+    Console.WriteLine("Додати баланс\n");
     enterelement("айді ТЗ");
     vID = Console.ReadLine();
-    enterelement("Суму щоб додати:");
+    enterelement("Суму щоб додати");
     bal =Convert.ToInt32( Console.ReadLine());
     var vic = viechles.First(v => v.ViechleId == vID);
 
@@ -186,11 +183,13 @@ void addbalance()
 }
 void vieclebalance()
 {
+    Console.Clear();
+    Console.WriteLine("Переглянути баланс\n");
     enterelement("айді транспорту");
     vID = Console.ReadLine();
     if (idformat(vID))
     {
-        if ((viechles.Contains(new Viechle { ViechleId = vID })))
+        if (viechles.Contains(new Viechle { ViechleId = vID }))
         {
           int id = viechles.IndexOf(new Viechle { ViechleId = vID });
             Console.WriteLine(viechles[id]);
@@ -202,12 +201,6 @@ void vieclebalance()
         }
 
     }
-    else
-    {
-        Console.WriteLine($"Ваш айді '{vID}' не підходить під формат: ХХ-YYYY-XX");
-    }
-
-
 }
 public class Viechle : IEquatable<Viechle>
 {
